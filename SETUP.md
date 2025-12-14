@@ -22,17 +22,25 @@ This application now requires Google authentication via Supabase. Each user conf
 2. Find **Google** and click **Enable**
 3. You have two options:
 
-   **Option A: Use Supabase's OAuth (Easiest)**
+   **Option A: Use Supabase's OAuth (Easiest for Development)**
    - Simply toggle "Enable Sign in with Google"
    - Supabase provides default credentials for testing
+   - ⚠️ **Note**: This only works for development
 
-   **Option B: Use Your Own Google OAuth Credentials**
+   **Option B: Use Your Own Google OAuth Credentials (Required for Production)**
    - Go to [Google Cloud Console](https://console.cloud.google.com)
    - Create a new project or select existing one
    - Enable Google+ API
    - Create OAuth 2.0 credentials
-   - Add authorized redirect URI: `https://<your-project-ref>.supabase.co/auth/v1/callback`
+   - **Add authorized redirect URIs**:
+     - Development: `https://<your-project-ref>.supabase.co/auth/v1/callback`
+     - Production: `https://<your-project-ref>.supabase.co/auth/v1/callback`
+   - **Add authorized JavaScript origins**:
+     - Development: `http://localhost:3000`
+     - Production: `https://your-production-domain.com` (e.g., `https://gimini-tts.vercel.app`)
    - Copy Client ID and Client Secret to Supabase
+
+   > **Important**: The redirect URI must ALWAYS point to your Supabase URL, not your app URL. Supabase handles the OAuth flow and then redirects back to your app.
 
 ### 3. Set Up Database
 
