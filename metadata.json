@@ -1,0 +1,5 @@
+{
+  "name": "Gemini 2.5 TTS Studio",
+  "description": "A professional Text-to-Speech application using Google's Gemini 2.5 TTS models. Features model selection, voice customization, and history management.",
+  "requestFramePermissions": []
+}
